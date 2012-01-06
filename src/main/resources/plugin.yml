@@ -1,0 +1,11 @@
+name: ChestFiller
+main: com.precipicegames.zeryl.chestfiller.ChestFiller
+version: 1.0
+commands:
+    cfitem:
+        description: Sets the currently select item for filling
+        usage: /hns [itemid]
+permissions:
+    precipice.chestfiller.canfill:
+        description: Whether or not you can fill chests.
+        default: op
