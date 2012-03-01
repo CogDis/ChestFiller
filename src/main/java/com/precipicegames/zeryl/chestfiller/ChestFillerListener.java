@@ -83,6 +83,7 @@ public class ChestFillerListener implements Listener {
                         foundblock = partner;
                         found = true;
                     }
+                    break;
                 }
                 
                 int i;
