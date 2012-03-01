@@ -4,8 +4,9 @@ import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.Chest;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.event.player.PlayerListener;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
@@ -13,15 +14,16 @@ import org.bukkit.inventory.ItemStack;
  *
  * @author Zeryl
  */
-public class ChestFillerPlayerListener extends PlayerListener {
-
+public class ChestFillerListener implements Listener {
+    
     private final ChestFiller plugin;
-
-    public ChestFillerPlayerListener(ChestFiller instance) {
+    
+    public ChestFillerListener(ChestFiller instance) {
         plugin = instance;
+        plugin.getServer().getPluginManager().registerEvents(this, instance);
     }
 
-    @Override
+    @EventHandler
     public void onPlayerInteract(PlayerInteractEvent event) {
         Block block = event.getClickedBlock();
         Player player = event.getPlayer();
