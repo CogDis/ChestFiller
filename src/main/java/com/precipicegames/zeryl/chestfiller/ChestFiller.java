@@ -6,6 +6,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.PluginManager;
 
 /**
  *
@@ -16,14 +17,18 @@ public class ChestFiller extends JavaPlugin {
     
     public HashMap<Player, String> items = new HashMap();
     
+    private final ChestFillerListener listener = new ChestFillerListener(this);
+    
     @Override
     public void onEnable() {
-        new ChestFillerListener(this);
+        PluginManager pm = this.getServer().getPluginManager();
+        pm.registerEvents(this.listener, this);
         
         PluginDescriptionFile pdf = this.getDescription();
         System.out.println(pdf.getName() + " is now enabled.");
     }
     
+    @Override
     public void onDisable() {
         PluginDescriptionFile pdf = this.getDescription();
         System.out.println(pdf.getName() + " is now disabled.");

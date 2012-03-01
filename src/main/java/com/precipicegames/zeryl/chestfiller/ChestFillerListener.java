@@ -16,11 +16,10 @@ import org.bukkit.inventory.ItemStack;
  */
 public class ChestFillerListener implements Listener {
     
-    private final ChestFiller plugin;
+    private ChestFiller plugin = null;
     
     public ChestFillerListener(ChestFiller instance) {
-        plugin = instance;
-        plugin.getServer().getPluginManager().registerEvents(this, instance);
+        this.plugin = instance;
     }
 
     @EventHandler
